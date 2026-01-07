@@ -6,9 +6,9 @@ Created on Mon Nov  2 15:18:40 2015
 """
 import numpy as np
 
-import menu
-from classes import OBJET
-from classes import PHYS
+from . import menu
+from .classes import OBJET
+from .classes import PHYS
 
 
 def sys():
@@ -22,9 +22,9 @@ def sys():
     print("\nDimension du projectile : \n")
     while confirm == 0:
         Sys = OBJET(0, 0, 0)
-        D = input("  Diamètre (m) : ")
-        L = input("  Longueur (m) : ")
-        Sys.m = input("  Masse du projectile (kg) : ")
+        D = float(input("  Diamètre (m) : "))
+        L = float(input("  Longueur (m) : "))
+        Sys.m = float(input("  Masse du projectile (kg) : "))
         confirm = menu.conf()
 
     Sys.V = np.pi / 12 * D ** 3 + (L * np.pi / 4) * D ** 2  # Volume du système

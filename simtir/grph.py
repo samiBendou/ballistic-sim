@@ -7,7 +7,7 @@ Created on Mon Nov  2 15:18:40 2015
 import numpy as np
 import numpy.linalg as lng
 
-import calc as cl
+from . import calc as cl
 
 
 def LEGENDE(choix1, choix2):

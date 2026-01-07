@@ -12,8 +12,9 @@ Created on Mon Nov  2 15:18:39 2015
 ###########################
 
 import os
-import ini
-import grph
+from . import ini
+from . import calc 
+from . import grph
 
 def chx():
     return int(input("\n   Faites un choix : "))
@@ -21,6 +22,11 @@ def chx():
 
 def conf():
     return int(input("\n   Confirmer les valeurs (Oui: 1, Non: 0) ? "))
+
+
+def saisie(value):
+    """Convertit une valeur d'entrée en float"""
+    return float(value)
 
 
 ################################
@@ -32,7 +38,7 @@ def conf():
 def princ():
     # Affiche le menu principal et donner le choix entre la simulation et les
     # Options.
-    os.system("cls")
+    os.system("clear")
     print("\n         *Bienvenue dans SimTir 1.0*\n")
     print(" 1- Simulation simple")
     print(" 2- Options")
@@ -122,7 +128,7 @@ def sous_traj():
 
 def numerique(S, N, Sys, Pp, h):
     # Affiche les informations numériques ci dessous pour un mobile
-    L = grph.info(S, N, Sys, Pp)
+    L = calc.info(S, N, Sys, Pp)
 
     print("\n -Nombre d'échantillons : ", N)
     print(" -Temps de chute : ", round(N * h, 2), "sec.")
@@ -138,14 +144,14 @@ def numerique(S, N, Sys, Pp, h):
 def multi_num(M, K, NK, SYS, Pp, h):
     # Affiche les informations numériques pour tous les mobiles
 
-    os.system("cls")
+    os.system("clear")
     print("")
     print("\n     *Simulation effectuée*\n")
     info_num = input("Afficher les informations numériques? ")
     print("")
-    if info_num == "oui" or info_num == "OUI" or info_num == "Oui" or "1":
+    if info_num == "oui" or info_num == "OUI" or info_num == "Oui" or info_num == "1":
         for k in range(K):
-            info_num(M[k], NK[k], SYS[k], Pp, h)
+            numerique(M[k], NK[k], SYS[k], Pp, h)
 
     return ()
 
@@ -160,7 +166,7 @@ def param_sim():
     # Affiche le menu d'initialisation des paramètres temporels de la simulation.
     # Retourne Pt.
 
-    os.system("cls")
+    os.system("clear")
     print("\n Menu Options\n")
     print("1- Temps")
     print("2- Repérage")
@@ -174,7 +180,7 @@ def param_temp():
 
     confirm = 0
     while confirm == 0:
-        os.system("cls")
+        os.system("clear")
         print("\nParamètres de la simulation :\n")
         h = float(input("    Pas de temps (s) : "))
         Tmax = float(input("   Durée maximale de la simulation : "))
@@ -187,7 +193,7 @@ def param_rep():
     # Paramètres de repérages : choix du système de coordonnées
     confirm = 0
     while confirm == 0:
-        os.system("cls")
+        os.system("clear")
         print("\nChoissisez un système de coordonnées pour la vitesse initiale : \n")
         rep = input("Taper 's' pour sphérique et 'c' pour cartésien : \n")
         confirm = conf()
@@ -197,7 +203,7 @@ def param_rep():
 
 def param_phys():
     # Affiche le menu simulaion et retourne le choix de l'utilisateur
-    os.system("cls")
+    os.system("clear")
     print("\nChoisissez votre simulation de chute libre: \n")
     print(" 1- Terrestre dans l'air (Conditions standard)")
     print(" 2- Terrestre sans frottements, sans poussée d'archimède")
@@ -209,7 +215,7 @@ def param_phys():
 
 
 def param_calcul():
-    os.system("cls")
+    os.system("clear")
     print("\nChoix de la méthode de résolution : \n")
     print("1- Euler explicite")
     print("2- Scipy Odeint")

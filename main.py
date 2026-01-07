@@ -69,7 +69,7 @@ confirm = 0
 
 choix_princ = 0
 
-while (choix_princ != 4):
+while (choix_princ != 3):
 
     choix_princ = men.princ()
 
@@ -94,11 +94,11 @@ while (choix_princ != 4):
             NK.append(2 * int((-M0[k, 5] + np.sqrt(M0[k, 5] ** 2 + 2 * M0[k, 2] * Phys.g) / Phys.g / h)))
         N = max(NK)
         # Affichage des résultats
-        os.system("cls")
+        os.system("clear")
         print("\n     *Simulation effectuée*\n")
         for k in range(K):
-            info_num = input("Afficher les informations numériques du projectile N°{0} ?\n".format(k + 1))
-            if info_num == 1:
+            info_num = input("Afficher les informations numériques du projectile N°{0} (1 pour oui)?\n".format(k + 1))
+            if info_num == "1":
                 men.numerique(M[k], NK[k], SYS[k], Phys, h)
 
         chx_res = 0
@@ -127,15 +127,15 @@ while (choix_princ != 4):
                         ax = fig.add_subplot(111)
 
                         Legend.append(" Projectile N°{0}".format(k + 1))
-                        G.append(grph.TRACE(chx_res, chx_grph, M[k], NK[k], h, SYS[k], Phys))
+                        G = grph.TRACE(chx_res, chx_grph, M[k], NK[k], h, SYS[k], Phys)
 
                         ax.spines['right'].set_color('none')
                         ax.spines['top'].set_color('none')
                         plt.plot(G[0], G[1])
 
-                plt.xlabel(G[2][0])  # Légendage 2D
-                plt.ylabel(G[2][1])
-                plt.title(G[2][2])
+                        plt.xlabel(G[2][0])  # Légendage 2D
+                        plt.ylabel(G[2][1])
+                        plt.title(G[2][2])
 
                 plt.legend(Legend)  # Affichage de la légende des courbes
                 plt.show()
