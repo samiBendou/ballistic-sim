@@ -101,8 +101,8 @@ def extrait(choix1, choix2, S, N, Sys, Pp):
     X = []
     Y = []
     for k in range(N):
-        if choix1 < 2:  # Tracé des positions ou des vitesses en fonction du temps
-            Y.append(S[k][pos2] + 3 * pos1)
+        if choix1 <= 2:  # Tracé des positions ou des vitesses en fonction du temps
+            Y.append(S[k][pos2 + 3 * pos1])
         elif choix1 == 3:  # Tracé des trajectoires en 2D
             if choix2 < 3:  # Ce choix détermine le plan dans lequel on trace la trajectoire
                 X.append(S[k][0])
